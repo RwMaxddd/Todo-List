@@ -1,0 +1,31 @@
+{
+  "tasks": [
+    {
+      "eventId": 1,
+      "status": "todo",
+      "title": "打算去学习",
+      "detail": "打算去学习",
+      "id": 1
+    },
+    {
+      "eventId": 1,
+      "status": "inProgress",
+      "title": "正在学习",
+      "detail": "正在学习",
+      "id": 2
+    },
+    {
+      "eventId": 1,
+      "status": "completed",
+      "title": "芜湖学完了",
+      "detail": "芜湖学完了",
+      "id": 3
+    }
+  ],
+  "events": [
+    {
+      "eventName": "学习",
+      "id": 1
+    }
+  ]
+}
