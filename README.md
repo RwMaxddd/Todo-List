@@ -22,6 +22,6 @@
 
 ## 项目截图
 
-![Image text]https://gitee.com/Max1706/todo-list/blob/master/src/assets/1.png
+![Image text](https://gitee.com/Max1706/todo-list/blob/master/src/assets/1.png)
 
 
