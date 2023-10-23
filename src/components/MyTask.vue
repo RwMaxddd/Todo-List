@@ -174,6 +174,7 @@ function updateStatus(directionNum){
   height: 1em;
   margin-right: 8px;
   transition: color .2s;
+  cursor: pointer;
 }
 .left:hover,
 .right:hover,

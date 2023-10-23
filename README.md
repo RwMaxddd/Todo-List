@@ -22,6 +22,4 @@
 
 ## 项目截图
 
-![2cdf3fce-a7b9-4268-ac89-794facabaccf](file:///C:/Users/17804/Pictures/Typedown/2cdf3fce-a7b9-4268-ac89-794facabaccf.png)
-
-
+![Image text][src/assets/1.png · RW/Todo List - 码云 - 开源中国 (gitee.com)](https://gitee.com/Max1706/todo-list/blob/master/src/assets/1.png)
