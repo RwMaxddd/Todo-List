@@ -22,4 +22,10 @@
 
 ## 项目截图
 
+<<<<<<< HEAD
 ![Image text][src/assets/1.png · RW/Todo List - 码云 - 开源中国 (gitee.com)](https://gitee.com/Max1706/todo-list/blob/master/src/assets/1.png)
+=======
+![输入图片说明](src/assets/1.png)
+
+
+>>>>>>> 1fbfcf368987659d7ad3b5cb0e8ef5e360e05f2e
