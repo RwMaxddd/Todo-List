@@ -37,6 +37,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script setup>
@@ -182,4 +183,5 @@ function updateStatus(directionNum){
 .delete:hover{
   color: skyblue;
 }
+
 </style>

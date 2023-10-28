@@ -2,14 +2,14 @@
   "tasks": [
     {
       "eventId": 1,
-      "status": "todo",
+      "status": "inProgress",
       "title": "打算去学习",
       "detail": "打算去学习",
       "id": 1
     },
     {
       "eventId": 1,
-      "status": "inProgress",
+      "status": "todo",
       "title": "正在学习",
       "detail": "正在学习",
       "id": 2

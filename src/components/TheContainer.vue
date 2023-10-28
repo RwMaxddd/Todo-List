@@ -139,4 +139,5 @@ function openTaskDialog(taskType){
   margin-right: 10px;
   margin-left: 10px;
 }
+
 </style>
