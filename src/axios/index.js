@@ -7,6 +7,7 @@ const todoAxios = axios.create({
     timeout:1000
 })
 todoAxios.interceptors.response.use(res=>{
+    console.log(res)
     if (res.status > 400 || res.status < 200){
         console.log('服务异常')
         return Promise.reject(new Error(res.statusText))
