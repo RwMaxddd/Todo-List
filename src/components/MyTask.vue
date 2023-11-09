@@ -16,7 +16,7 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="closeDialog('cancel')">Cancel</el-button>
-        <el-button type="primary" @click="closeDialog('confirm')">
+        <el-button type="primary" @click="closeDialog('confirm')" ref="confirmBtn" :class="{ shake: disabled }">
           Confirm
         </el-button>
       </span>
@@ -53,6 +53,8 @@ const store = useStore()
 const props = defineProps(['task'])
 const dialogFormVisible = ref(false)
 const formRef = ref(null)
+const confirmBtn = ref(null)
+const disabled = ref(false)
 const formLabelWidth = '80px'
 const form = reactive({
   title: '',
@@ -77,6 +79,12 @@ function openDialog(){
   form.title = props.task.title
   form.detail = props.task.detail
 }
+function warnDisabled() {
+  disabled.value = true
+  setTimeout(() => {
+    disabled.value = false
+  }, 1500)
+}
 function closeDialog(closeType){
   if (closeType === 'cancel'){
     dialogFormVisible.value = false
@@ -97,6 +105,8 @@ function closeDialog(closeType){
         }).catch(function (err){
           ElMessage.error(err.message)
         })
+      }else {
+        warnDisabled()
       }
     })
   }
@@ -184,4 +194,27 @@ function updateStatus(directionNum){
   color: skyblue;
 }
 
+.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
 </style>
