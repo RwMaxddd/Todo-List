@@ -19,7 +19,9 @@
     <div><h1 class="event-bar-title">.kanban</h1></div>
     <AddButton @click="openDialog"></AddButton>
     <div class="event-container">
-      <MyEvent v-for="eventObj in store.state.todo.events" :key="eventObj.id" :event="eventObj"></MyEvent>
+      <TransitionGroup name="eventList">
+        <MyEvent v-for="eventObj in store.state.todo.events" :key="eventObj.id" :event="eventObj"></MyEvent>
+      </TransitionGroup>
     </div>
   </div>
 </template>
@@ -101,5 +103,14 @@ onMounted(()=>{
   align-items: center;
   flex-grow: 1;
   overflow: auto;
+}
+.eventList-enter-active,
+.eventList-leave-active {
+  transition: all .5s ease;
+}
+.eventList-enter-from,
+.eventList-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

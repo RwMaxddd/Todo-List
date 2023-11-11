@@ -1,28 +1,4 @@
 <template>
-  <el-dialog v-model="dialogFormVisible" title="Tasks">
-    <el-form :model="form" ref="formRef" :rules="rules">
-      <el-form-item label="Title" :label-width="formLabelWidth" prop="title">
-        <el-input v-model="form.title" placeholder="Please input" autocomplete="off" clearable style="width: 240px"/>
-      </el-form-item>
-      <el-form-item label="Detail" :label-width="formLabelWidth" prop="detail">
-        <el-input
-            v-model="form.detail"
-            :autosize="{ minRows: 2, maxRows: 4 }"
-            type="textarea"
-            placeholder="Please input"
-        />
-      </el-form-item>
-    </el-form>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="closeDialog('cancel')">Cancel</el-button>
-        <el-button type="primary" @click="closeDialog('confirm')" ref="confirmBtn" :class="{ shake: disabled }">
-          Confirm
-        </el-button>
-      </span>
-    </template>
-  </el-dialog>
-
   <div class="task" ref="taskDom">
     <h2 class="task-name">{{props.task.title}}</h2>
     <p class="task-details">{{props.task.detail}}</p>
@@ -45,29 +21,12 @@ import { Edit } from '@element-plus/icons-vue'
 import { Delete } from '@element-plus/icons-vue'
 import { ArrowLeft } from '@element-plus/icons-vue'
 import { ArrowRight } from '@element-plus/icons-vue'
-import {computed, defineProps, reactive, ref} from "vue";
+import {computed, defineProps} from "vue";
 import {useStore} from "vuex";
 import {ElMessage} from "element-plus";
 
 const store = useStore()
 const props = defineProps(['task'])
-const dialogFormVisible = ref(false)
-const formRef = ref(null)
-const confirmBtn = ref(null)
-const disabled = ref(false)
-const formLabelWidth = '80px'
-const form = reactive({
-  title: '',
-  detail: '',
-})
-const rules = reactive({
-  title:[
-    {required: true, message: '标题不能为空', trigger: 'change'}
-  ],
-  detail:[
-    {required: true, message: '内容不能为空', trigger: 'change'}
-  ]
-})
 let isShowLeft = computed(()=>{
   return props.task.status === 'todo' ? false:true
 })
@@ -75,42 +34,14 @@ let isShowRight = computed(()=>{
   return props.task.status === 'completed' ? false:true
 })
 function openDialog(){
-  dialogFormVisible.value = true
-  form.title = props.task.title
-  form.detail = props.task.detail
-}
-function warnDisabled() {
-  disabled.value = true
-  setTimeout(() => {
-    disabled.value = false
-  }, 1500)
-}
-function closeDialog(closeType){
-  if (closeType === 'cancel'){
-    dialogFormVisible.value = false
-  }else{
-    formRef.value.validate(valid => {
-      if (valid){
-        dialogFormVisible.value = false
-        const data = {
-          title:form.title,
-          detail:form.detail,
-          id:props.task.id
-        }
-        store.dispatch("todo/updateTaskInformation",data).then(res => {
-          ElMessage({
-            message: res,
-            type: 'success',
-          })
-        }).catch(function (err){
-          ElMessage.error(err.message)
-        })
-      }else {
-        warnDisabled()
-      }
-    })
+  const data = {
+    title:props.task.title,
+    detail:props.task.detail,
+    taskId:props.task.id
   }
+  store.commit('dialog/openUpdateTaskDialog',data)
 }
+
 function deleteTask(){
   store.dispatch("todo/deleteTask",props.task.id).then(res => {
     ElMessage({
@@ -134,6 +65,7 @@ function updateStatus(directionNum){
 </script>
 
 <style scoped>
+@import "../style/ConfirmAnimation.css";
 .task{
   background-color: #fff;
   padding: 15px;
@@ -192,29 +124,5 @@ function updateStatus(directionNum){
 .edit:hover,
 .delete:hover{
   color: skyblue;
-}
-
-.shake {
-  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  transform: translate3d(0, 0, 0);
-}
-@keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  20%,
-  80% {
-    transform: translate3d(2px, 0, 0);
-  }
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-  40%,
-  60% {
-    transform: translate3d(4px, 0, 0);
-  }
 }
 </style>
