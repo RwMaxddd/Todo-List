@@ -22,4 +22,4 @@
 
 ## 项目截图
 
-![输入图片说明](src/assets/1.png)
+![image text](https://github.com/RwMaxddd/Todo-List/blob/master/src/assets/1.jpg)
