@@ -2,23 +2,23 @@
   "tasks": [
     {
       "eventId": 1,
-      "status": "inProgress",
+      "status": "todo",
       "title": "打算去学习",
-      "detail": "打算去学习",
+      "detail": "下午打算去学习",
       "id": 1
     },
     {
       "eventId": 1,
-      "status": "todo",
+      "status": "inProgress",
       "title": "正在学习",
-      "detail": "正在学习",
+      "detail": "在学习中摸鱼",
       "id": 2
     },
     {
       "eventId": 1,
       "status": "completed",
       "title": "芜湖学完了",
-      "detail": "芜湖学完了",
+      "detail": "摸鱼真累呀",
       "id": 3
     }
   ],

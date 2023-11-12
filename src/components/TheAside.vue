@@ -108,7 +108,10 @@ onMounted(()=>{
 .eventList-leave-active {
   transition: all .5s ease;
 }
-.eventList-enter-from,
+.eventList-enter-from{
+  opacity: 0;
+  transform: translateX(-30px);
+}
 .eventList-leave-to {
   opacity: 0;
   transform: translateX(30px);

@@ -86,7 +86,10 @@ function openTaskDialog(taskType){
 .list-leave-active {
   transition: all 0.5s ease;
 }
-.list-enter-from,
+.list-enter-from{
+  opacity: 0;
+  transform: translateX(-30px);
+}
 .list-leave-to {
   opacity: 0;
   transform: translateX(30px);

@@ -122,8 +122,8 @@ export default {
             state.completedTasks = []
         },
         loadEvents(state,value){
-            state.nowEvent = ""
-            state.nowEventId = null
+            // state.nowEvent = ""
+            // state.nowEventId = null
             state.events = value
         },
         updateEvent(state,{id,eventName}){
